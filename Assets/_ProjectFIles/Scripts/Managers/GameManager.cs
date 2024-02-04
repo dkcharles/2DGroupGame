@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 // Enum for example game states
+[Serializable]
 public enum GameState
 {
     SplashScreen,
@@ -18,17 +20,11 @@ public enum GameState
 // GameManager is a persistent singleton class that manages the game
 public class GameManager : PersistentSingleton<GameManager>
 {
-    public Player Plr; // player object
     public GameState CurrentGameState; // current game state
     public bool GameRunning = false; // is the game running?
+    public float PlayerScore = 10; // player score
 
     #region Standard Unity Methods
-    void Awake()
-    {
-        Debug.Log("GameManager is awake"); // delete this line after testing
-        Plr = gameObject.AddComponent<Player>();
-    }
-
     void Start()
     {
         Debug.Log("GameManager is running"); // delete this line after testing
